@@ -1,0 +1,59 @@
+.__lftv__hide {
+    display: none !important;
+}
+
+/* Chat work */
+#__lftv___toolbarIcons {
+    display: flex;
+    align-items: center;
+}
+.__lftv___toolbarIcon {
+    display: flex;
+    height: 24px;
+    margin: 0 4px;
+    align-items: center;
+    opacity: 0.8;
+    cursor: pointer;
+}
+.__lftv___toolbarIcon:hover {
+    opacity: 1;
+}
+
+.__lftv___toolbarIcon_tag,
+.__lftv___toolbarIcon_to,
+.__lftv___toolbarIcon_to_multi {
+    display: flex;
+    padding: 2px 4px;
+    border-radius: 2px;
+    align-items: center;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 12px;
+    -webkit-user-select: none;
+}
+
+.__lftv___toolbarIcon_tag {
+    background-color: #444444;
+}
+.__lftv___toolbarIcon_to {
+    background-color: #ffa000;
+}
+.__lftv___toolbarIcon_to_multi {
+    background-color: lightcoral;
+}
+
+/* Popup */
+#__lftv___json {
+    resize: none;
+}
+.__lftv___btnContainer {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+#__lftv___btn {
+    float: left;
+}
+#__lftv___btnLoadDefault {
+    float: right;
+}

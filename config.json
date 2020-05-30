@@ -1,0 +1,52 @@
+{
+    "_comment": [
+        "vinh: 2628839",
+        "kien: 2628823",
+        "tri: 2628870",
+        "duyen: 4145830"
+    ],
+    "single": [
+        {
+            "id": "2628839",
+            "name": "Nguyễn Quốc Vinh",
+            "text": "TO: Vinh"
+        },
+        {
+            "id": "4145830",
+            "name": "Phan Thị Mỹ Duyên",
+            "text": "TO: Duyên"
+        }
+    ],
+    "multiple": [
+        {
+            "text": "TO: BS Member",
+            "items": [
+                {
+                    "id": "2628839",
+                    "name": "Nguyễn Quốc Vinh"
+                },
+                {
+                    "id": "2628870",
+                    "name": "Võ Minh Trí"
+                },
+                {
+                    "id": "4145830",
+                    "name": "Phan Thị Mỹ Duyên"
+                }
+            ]
+        },
+        {
+            "text": "TO: QA",
+            "items": [
+                {
+                    "id": "2628839",
+                    "name": "Nguyễn Quốc Vinh"
+                },
+                {
+                    "id": "4145830",
+                    "name": "Phan Thị Mỹ Duyên"
+                }
+            ]
+        }
+    ]
+}

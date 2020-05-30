@@ -1,0 +1,29 @@
+{
+    "manifest_version": 2,
+    "author": "KienHN",
+    "description": "Chatwork Input Tools",
+    "name": "Chatwork Input Tools",
+    "version": "1.0.2",
+    "content_scripts": [{
+        "css": [ "style.css" ],
+        "js": [ "script.js" ],
+        "matches": ["https://www.chatwork.com/*"],
+        "run_at": "document_idle"
+    }],
+    "web_accessible_resources": [
+        "*.json"
+    ],
+    "permissions": [
+        "storage"
+    ],
+    "browser_action": {
+        "default_icon": {
+            "128": "icon.png"
+        },
+        "default_popup": "popup.html",
+        "default_title": "Modify Setting"
+    },
+    "icons": {
+        "128": "icon.png"
+    }
+}
