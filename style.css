@@ -21,7 +21,8 @@
 
 .__lftv___toolbarIcon_tag,
 .__lftv___toolbarIcon_to,
-.__lftv___toolbarIcon_to_multi {
+.__lftv___toolbarIcon_to_multi,
+.__lftv___toolbarIcon_emo {
     display: flex;
     padding: 2px 4px;
     border-radius: 2px;
@@ -40,6 +41,9 @@
 }
 .__lftv___toolbarIcon_to_multi {
     background-color: lightcoral;
+}
+.__lftv___toolbarIcon_emo {
+    background-color: lightskyblue;
 }
 
 /* Popup */

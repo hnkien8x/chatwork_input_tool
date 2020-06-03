@@ -9,6 +9,57 @@ const NEW_LINE = "\n";
 const PREFIX_TO_SINGLE = "to";
 const PREFIX_TO_MULTI = "to_multi";
 const PREFIX_ICON = "tag";
+const TEXT_TO_ICON = {
+    ":)": "https://assets.chatwork.com/images/emoticon2x/emo_smile.gif",
+    ":(": "https://assets.chatwork.com/images/emoticon2x/emo_sad.gif",
+    ":D": "https://assets.chatwork.com/images/emoticon2x/emo_more_smile.gif",
+    "8-)": "https://assets.chatwork.com/images/emoticon2x/emo_lucky.gif",
+    ":o": "https://assets.chatwork.com/images/emoticon2x/emo_surprise.gif",
+    ";)": "https://assets.chatwork.com/images/emoticon2x/emo_wink.gif",
+    ";(": "https://assets.chatwork.com/images/emoticon2x/emo_tears.gif",
+    "(sweat)": "https://assets.chatwork.com/images/emoticon2x/emo_sweat.gif",
+    ":|": "https://assets.chatwork.com/images/emoticon2x/emo_mumu.gif",
+    ":*": "https://assets.chatwork.com/images/emoticon2x/emo_kiss.gif",
+    ":p": "https://assets.chatwork.com/images/emoticon2x/emo_tongueout.gif",
+    "(blush)": "https://assets.chatwork.com/images/emoticon2x/emo_blush.gif",
+    ":^)": "https://assets.chatwork.com/images/emoticon2x/emo_wonder.gif",
+    "|-)": "https://assets.chatwork.com/images/emoticon2x/emo_snooze.gif",
+    "(inlove)": "https://assets.chatwork.com/images/emoticon2x/emo_love.gif",
+    "]:)": "https://assets.chatwork.com/images/emoticon2x/emo_grin.gif",
+    "(talk)": "https://assets.chatwork.com/images/emoticon2x/emo_talk.gif",
+    "(yawn)": "https://assets.chatwork.com/images/emoticon2x/emo_yawn.gif",
+    "(puke)": "https://assets.chatwork.com/images/emoticon2x/emo_puke.gif",
+    "(emo)": "https://assets.chatwork.com/images/emoticon2x/emo_ikemen.gif",
+    "8-|": "https://assets.chatwork.com/images/emoticon2x/emo_otaku.gif",
+    ":#)": "https://assets.chatwork.com/images/emoticon2x/emo_ninmari.gif",
+    "(nod)": "https://assets.chatwork.com/images/emoticon2x/emo_nod.gif",
+    "(shake)": "https://assets.chatwork.com/images/emoticon2x/emo_shake.gif",
+    "(^^;)": "https://assets.chatwork.com/images/emoticon2x/emo_wry_smile.gif",
+    "(whew)": "https://assets.chatwork.com/images/emoticon2x/emo_whew.gif",
+    "(clap)": "https://assets.chatwork.com/images/emoticon2x/emo_clap.gif",
+    "(bow)": "https://assets.chatwork.com/images/emoticon2x/emo_bow.gif",
+    "(roger)": "https://assets.chatwork.com/images/emoticon2x/emo_roger.gif",
+    "(flex)": "https://assets.chatwork.com/images/emoticon2x/emo_muscle.gif",
+    "(dance)": "https://assets.chatwork.com/images/emoticon2x/emo_dance.gif",
+    "(:/)": "https://assets.chatwork.com/images/emoticon2x/emo_komanechi.gif",
+    "(gogo)": "https://assets.chatwork.com/images/emoticon2x/emo_gogo.gif",
+    "(think)": "https://assets.chatwork.com/images/emoticon2x/emo_think.gif",
+    "(please)": "https://assets.chatwork.com/images/emoticon2x/emo_please.gif",
+    "(quick)": "https://assets.chatwork.com/images/emoticon2x/emo_quick.gif",
+    "(anger)": "https://assets.chatwork.com/images/emoticon2x/emo_anger.gif",
+    "(devil)": "https://assets.chatwork.com/images/emoticon2x/emo_devil.gif",
+    "(lightbulb)": "https://assets.chatwork.com/images/emoticon2x/emo_lightbulb.gif",
+    "(*)": "https://assets.chatwork.com/images/emoticon2x/emo_star.gif",
+    "(h)": "https://assets.chatwork.com/images/emoticon2x/emo_heart.gif",
+    "(F)": "https://assets.chatwork.com/images/emoticon2x/emo_flower.gif",
+    "(cracker)": "https://assets.chatwork.com/images/emoticon2x/emo_cracker.gif",
+    "(eat)": "https://assets.chatwork.com/images/emoticon2x/emo_eat.gif",
+    "(^)": "https://assets.chatwork.com/images/emoticon2x/emo_cake.gif",
+    "(coffee)": "https://assets.chatwork.com/images/emoticon2x/emo_coffee.gif",
+    "(beer)": "https://assets.chatwork.com/images/emoticon2x/emo_beer.gif",
+    "(handshake)": "https://assets.chatwork.com/images/emoticon2x/emo_handshake.gif",
+    "(y)": "https://assets.chatwork.com/images/emoticon2x/emo_yes.gif"
+};
 
 /**
  * Create html element from string
@@ -27,12 +78,21 @@ const createElement = (str) => {
  * @param {Function} handler Click function
  * @param {String} desc Tooltip
  */
-const createIcon = (name, type, handler, desc) => {
-    const html = `
+const createIcon = (name, type, handler, desc, isIcon) => {
+    let html = `
         <li class="_showDescription __lftv___toolbarIcon" role="button" aria-label="${desc}" >
         <span class="__lftv___toolbarIcon_${type}">${name}</span>
         </li>
     `.trim();
+    if (isIcon) {
+        html = `
+        <li class="_showDescription __lftv___toolbarIcon" role="button" aria-label="${desc}" >
+            <span class="__lftv___toolbarIcon_${type}">
+                <img src="${name}" class="emoticonTooltip__emoticon" title="" alt="">
+            </span>
+        </li>
+        `.trim();
+    }
     const el = createElement(html);
     el.addEventListener("click", handler);
     return el;
@@ -141,6 +201,28 @@ const processJson = (json) => {
 
             const chatworkItem = createIcon(text, PREFIX_TO_MULTI, insert(users.join(NEW_LINE) + NEW_LINE), "To: " + tooltip.join(", "));
             chatworkItems.push(chatworkItem);
+        }
+    }
+
+    // Build Text items
+    if (json.text) {
+        let replaceTextDisplayByIcon = json.text.replace_text_display_by_icon || false;
+        if (json.text.items) {
+            for (const item of json.text.items) {
+                if (!item.insert) {
+                    continue;
+                }
+                let textDisplay = item.display || item.insert;
+                let isIcon = false;
+                if (replaceTextDisplayByIcon) {
+                    if (TEXT_TO_ICON[item.insert]) {
+                        textDisplay = TEXT_TO_ICON[item.insert];
+                        isIcon = true;
+                    }
+                }
+                const chatworkItem = createIcon(textDisplay, 'emo', insert(item.insert), item.insert, isIcon);
+                chatworkItems.push(chatworkItem);
+            }
         }
     }
 

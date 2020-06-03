@@ -48,5 +48,18 @@
                 }
             ]
         }
-    ]
+    ],
+    "text": {
+        "replace_text_display_by_icon": true,
+        "items": [
+            {
+                "display": "Quỳ lạy",
+                "insert": "(bow)"
+            },
+            {
+                "display": "Chào",
+                "insert": "(roger)"
+            }
+        ]
+    }
 }
